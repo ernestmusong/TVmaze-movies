@@ -27,7 +27,6 @@ nav {
   display: flex;
   align-items: center;
   width: 100%;
-  
 }
 
 .logo {
@@ -47,34 +46,16 @@ nav {
   gap: 0.5rem;
 }
 
-.menu-wrap li {
- 
-}
-
- a {
-text-decoration: none;
-color: #333;
-font-weight: bold;
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }
 
 /* -------------------------------------------MAIN CONTENT-------------------------- */
 
-main {
-
-}
-
-.shows-container {
-
-}
 
 /* -------------------------------------------FOOTER---------------------------------- */
-
-footer {
-  
-}
-footer p {
-
-}
 
 /* --------------------------------------------MEDIA QUERIES */
 @media only screen and (max-width: 768px) {
@@ -83,10 +64,12 @@ footer p {
     gap: 2rem;
   }
 }
+
 @media only screen and (min-width: 768px) {
   header {
     padding: 0 25%;
   }
+
   nav {
     /* justify-content: space-around; */
     gap: 2rem;
@@ -96,4 +79,3 @@ footer p {
     gap: 1.5rem;
   }
 }
- 
