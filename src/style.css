@@ -54,37 +54,123 @@ a {
 
 /* -------------------------------------------MAIN CONTENT-------------------------- */
 
+main {
+  padding: 2rem 1rem;
+}
+
+.shows-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  width: 150px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.img-wrap {
+  width: 85%;
+  height: 100px;
+}
+
+.show-img {
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.likes-conatainer,
+.likes-value-wrap {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes-value-wrap {
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 2px;
+}
+
+.likes-value-wrap p {
+  display: flex;
+  gap: 5px;
+}
+
+.like-btn {
+  border: none;
+  outline: none;
+}
+
+.comment-btn {
+  width: 85%;
+  text-transform: capitalize;
+}
+
 /* -------------------------------------------FOOTER---------------------------------- */
 
 footer {
-  padding: 20px;
-  text-align: center;
   font-size: 14px;
+  border: 1px solid black;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-footer p {
-  margin: 0;
-}
-
-/* --------------------------------------------MEDIA QUERIES */
+/* ---------------------------------------------------MEDIA QUERIES--------------------------- */
 @media only screen and (max-width: 768px) {
   nav {
-    /* justify-content: space-between; */
     gap: 2rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   header {
-    padding: 0 25%;
+    padding: 0 4rem;
   }
 
   nav {
-    /* justify-content: space-around; */
     gap: 2rem;
   }
 
   .menu-wrap {
     gap: 1.5rem;
+  }
+
+  main {
+    padding: 4rem;
+  }
+
+  .shows-container {
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  }
+
+  .show {
+    width: 325px;
+  }
+
+  .img-wrap {
+    height: 200px;
+  }
+
+  footer {
+    padding: 20px;
+    padding-left: 1rem;
   }
 }

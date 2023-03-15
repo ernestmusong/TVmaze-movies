@@ -1,12 +1,12 @@
 /* eslint import/extensions: 0 */
 import './style.css'; import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt';
+import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart';
 import SHOWS from './home.js';
 
-library.add(faTrashAlt);
+library.add(faHeart);
 dom.watch();
 
 window.addEventListener('DOMContentLoaded', () => {
-  SHOWS.getShows();
+  SHOWS.displayShows();
 });
