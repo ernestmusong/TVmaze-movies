@@ -1,4 +1,6 @@
 import { result } from 'lodash';
+import heart from './assets/images/heart.png';
+import INTERACTIONS from './interations.js';
 
 const url = 'https://api.tvmaze.com/search/shows?q=girls';
 const showsContainer = document.querySelector('.shows-container');
@@ -16,23 +18,35 @@ export default class SHOWS {
         count.textContent = `(${data.length})`;
         let result = '';
         for (let i = 0; i < data.length; i += 1) {
-          result += `
+          INTERACTIONS.getLikes().then(likes => {
+            console.log(likes)
+            //  let item = likes.find(like => like.item_id.toString() === data[i].show.id.toString())
+             let numberOfLikes = likes[i].likes
+             let item_id = likes[i].item_id.toString()
+             let showId = data[i].show.id.toString()
+             let value;
+             if(likes[i].item_id.toString() === data[i].show.id.toString()) {
+              value = likes[i].likes
+             }
+
+            result += `
             <article class="show">
             <div class="img-wrap">
                 <img class="show-img" src="${data[i].show.image.medium}" alt="image">
             </div>
             <div class="likes-conatainer">
                 <p class="name">${data[i].show.name}</p>
-                <button class="like-btn" id=${data[i].show.id} class="comment-btn"><i class="fas fa-heart"></i></button>
-                
+                   <img id=${data[i].show.id} class="heart"src=${heart} alt="image">
             </div>
             <div class="likes-value-wrap">
-                <p><span class="value">0</span><span>likes</span></p>
+                <p><span class="value">${value}</span><span>likes</span></p>
             </div>
             <button id=${data[i].show.id} class="comment-btn">comments</button>
         </article>
             `;
-          showsContainer.innerHTML = result;
+            showsContainer.innerHTML = result; 
+          })
+          
         }
       });
       return result;

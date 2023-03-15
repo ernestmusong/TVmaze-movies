@@ -89,6 +89,11 @@ main {
   width: 100%;
 }
 
+.heart {
+  width: 25px;
+  height: 25px;
+}
+
 .likes-conatainer,
 .likes-value-wrap {
   width: 85%;
@@ -111,6 +116,12 @@ main {
 .like-btn {
   border: none;
   outline: none;
+}
+.likes-btn {
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 50px;
 }
 
 .comment-btn {
