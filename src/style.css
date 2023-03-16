@@ -286,7 +286,7 @@ input:focus:invalid {
 #form input::placeholder,
 #form textarea::placeholder {
   font-weight: bold;
-  color: black;
+  color: #333;
 }
 
 .btn-container {
