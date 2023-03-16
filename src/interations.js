@@ -1,47 +1,82 @@
-import SHOWS from "./home.js";
+/* eslint import/no-cycle: 0 */
+import COMMENTS from './comments.js';
+import SHOWS from './home.js';
+
 const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
 const appsEndPoint = '/apps/';
 const likesEndPoint = '/likes/';
-const id = 'sRPHgjJhQMGqpfqhsriS'
+const id = 'sRPHgjJhQMGqpfqhsriS';
+const popUpOverlay = document.querySelector('.popup-overlay');
 
 export default class INTERACTIONS {
     static createAppId = async () => {
-        try {
-            const response = await fetch(baseUrl + appsEndPoint, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
-            const data = await response.text();
-            console.log(data)
-            return data;
-          } catch (error) {
-            return error;
-          }
+      try {
+        const response = await fetch(baseUrl + appsEndPoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await response.text();
+        return data;
+      } catch (error) {
+        return error;
       }
-    
-      static createNewLike = async (itemId) => {
+    }
+
+      static postLike = async (movieId) => {
         try {
           const response = await fetch(baseUrl + appsEndPoint + id + likesEndPoint, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-    
+
             body: JSON.stringify({
-                item_id: itemId
+              item_id: movieId,
             }),
           });
           const data = await response.text();
-          console.log(data)
           return data;
         } catch (error) {
-            console.log(error)
           return error;
         }
       }
-    
+
+      static createNewLike = (e) => {
+        if (e.target.classList.contains('heart')) {
+          const id = e.target.getAttribute('id');
+          INTERACTIONS.postLike(id).then((data) => {
+            if (data === 'Created') {
+              if (SHOWS.allShows.length) {
+                const likedShow = SHOWS.allShows.find((show) => Number(show.id) === Number(id));
+                if (likedShow) {
+                  likedShow.likes += 1;
+                }
+                SHOWS.renderMovies(SHOWS.allShows);
+              }
+            }
+          });
+        }
+      }
+
+      static showPopUp = (e) => {
+        SHOWS.getShows().then((data) => {
+          for (let i = 0; i < data.length; i += 1) {
+            if (e.target.id.toString() === data[i].show.id.toString()) {
+              popUpOverlay.classList.remove('remove-popup');
+              COMMENTS.displayPopUp(e);
+            }
+          }
+        });
+      }
+
+      static removePopUp = (e) => {
+        if (e.target.alt === 'close') {
+          popUpOverlay.classList.add('remove-popup');
+        }
+      }
+
       static getLikes = async () => {
         try {
           const response = await fetch(baseUrl + appsEndPoint + id + likesEndPoint, {
@@ -49,13 +84,11 @@ export default class INTERACTIONS {
             headers: {
               'Content-Type': 'application/json',
             },
-    
+
           });
           const data = await response.json();
-          console.log(data)
           return data;
         } catch (error) {
-            console.log(data)
           return error;
         }
       }

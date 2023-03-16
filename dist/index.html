@@ -6,25 +6,31 @@
     <title>TV Shows</title>
 <script defer src="bundle.js"></script></head>
 <body>
-    <nav>
-        <a href="">
-            <div class="logo">Logo</div>
-        </a>
-        <ul class="menu-wrap">
-            <li>
-                <a href="">Shows</a>
-            </li>
-            <li>
-                <a href="">Movies</a>
-            </li>
-            <li>
-                <a href="">Comedies</a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <a href="">
+                <div class="logo">Logo</div>
+            </a>
+            <ul class="menu-wrap">
+                <li>
+                    <a href="">Shows <span id="count"></span></a>
+                </li>
+                <li>
+                    <a href="">Movies</a>
+                </li>
+                <li>
+                    <a href="">Comedies</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <main>
-         <ul class="shows-container"></ul>
+         <section class="shows-section">
+            <div class="shows-container"></div>
+         </section>
     </main>
-    <footer><p>created by Microverse under CC license</p></footer>
+     <!-- Popup details -->
+ <section class="popup-overlay remove-popup"></section>
+    <footer><p>created by Microverse under &#169; license</p></footer>
 </body>
 </html>
