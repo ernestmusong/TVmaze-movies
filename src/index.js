@@ -20,10 +20,5 @@ window.addEventListener('click', (e) => {
   INTERACTIONS.createNewLike(e);
   INTERACTIONS.removePopUp(e);
 
-  SHOWS.getShows().then((data) => {
-    COMMENTS.displayPopUp(e, data);
-  });
-  if (e.target.type === 'submit') {
-    COMMENTS.createNewComment(e);
-  } else { e.preventDefault(); }
+  COMMENTS.displayPopUp(e);
 });

@@ -12,7 +12,6 @@ export default class SHOWS {
     static getShows = async () => {
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data);
       return data;
     }
 
@@ -47,7 +46,6 @@ export default class SHOWS {
           };
         });
         SHOWS.allShows = mappedMovies;
-        console.log(mappedMovies);
         SHOWS.renderMovies(mappedMovies);
       }
 
