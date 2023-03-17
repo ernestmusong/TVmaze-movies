@@ -12,7 +12,7 @@ export default class SHOWS {
     static getShows = async () => {
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       return data;
     }
 
@@ -47,7 +47,7 @@ export default class SHOWS {
           };
         });
         SHOWS.allShows = mappedMovies;
-        console.log(mappedMovies)
+        console.log(mappedMovies);
         SHOWS.renderMovies(mappedMovies);
       }
 
@@ -58,7 +58,7 @@ export default class SHOWS {
           INTERACTIONS.getLikes().then((likes) => {
             if (likes.length) {
               SHOWS.newMovies(likes, data);
-            } else{SHOWS.newMovies(data, data);}
+            } else { SHOWS.newMovies(data, data); }
           });
         });
       }

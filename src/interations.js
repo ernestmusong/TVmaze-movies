@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint import/no-cycle: 0 */
 import COMMENTS from './comments.js';
 import SHOWS from './home.js';
@@ -18,7 +19,7 @@ export default class INTERACTIONS {
           },
         });
         const data = await response.text();
-        console.log(data)
+        console.log(data);
         return data;
       } catch (error) {
         return error;
@@ -46,7 +47,7 @@ export default class INTERACTIONS {
 
       static createNewLike = (e) => {
         if (e.target.classList.contains('heart')) {
-          popUpOverlay.classList.add('remove-popup')
+          popUpOverlay.classList.add('remove-popup');
           const id = e.target.getAttribute('id');
           INTERACTIONS.postLike(id).then((data) => {
             if (data === 'Created') {

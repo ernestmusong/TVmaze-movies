@@ -9,27 +9,21 @@ library.add(faHeart);
 dom.watch();
 
 window.addEventListener('DOMContentLoaded', () => {
-  INTERACTIONS.createAppId()
+  INTERACTIONS.createAppId();
   SHOWS.displayShows();
   INTERACTIONS.getLikes();
   COMMENTS.getComments();
 });
 
 window.addEventListener('click', (e) => {
-  e.preventDefault()
+  e.preventDefault();
   INTERACTIONS.createNewLike(e);
   INTERACTIONS.removePopUp(e);
 
-   SHOWS.getShows().then(data => {
-    COMMENTS.displayPopUp(e, data)
-   })
-   if(e.target.type === "submit"){
-    COMMENTS.createNewComment(e)
-  } else {e.preventDefault()}
-   
+  SHOWS.getShows().then((data) => {
+    COMMENTS.displayPopUp(e, data);
+  });
+  if (e.target.type === 'submit') {
+    COMMENTS.createNewComment(e);
+  } else { e.preventDefault(); }
 });
-
- 
-
-  
-
