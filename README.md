@@ -49,6 +49,9 @@ It pulls data from the TVmaze API to display movies. Each movie details is shown
 
 ## 🚀 Project Presentation <a name="live-demo"></a>
 
+- [Presentation Link](https://drive.google.com/file/d/13AEyXIlIGFeWthJFKxhOIqinn1Ritn_F/view?usp=share_link)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
