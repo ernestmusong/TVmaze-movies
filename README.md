@@ -1,5 +1,5 @@
 <a name="readme-top"></a>
-  <h3><b>To Do List</b></h3>
+  <h3><b> TVmaze Movies</b></h3>
 
 # 📗 Table of Contents
 
@@ -22,10 +22,10 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [To Do List] <a name="about-project"></a>
+# 📖 [TVmaze Movies] <a name="about-project"></a>
 
-**[To Do List]** is a project at <a href='https://www.microverse.org/'>Microverse</a> module two.
-It's an application that allows users to add, edit and remove items from the list. All data is saved to local storage
+**[TVmaze Movies]** is a project at <a href='https://www.microverse.org/'>Microverse</a> module two.
+It pulls data from the TVmaze API to display movies. Each movie details is shown by clicking on movie item. We used the microverse involvement API to add comments and likes, and to display likes and comments.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -37,15 +37,15 @@ It's an application that allows users to add, edit and remove items from the lis
 </details>
 
 ### Key Features <a name="key-features"></a>
-- **[Add a todo]**
-- **[Remove a todo]**
-- **[Edit a todo]**
+- **[Add likes]**
+- **[Post a comment]**
+- **[Show comment and likes counts]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://musong-to-do.netlify.app/)
+- [Live Demo Link](https://musong-tv-shows.netlify.app/)
 
 ## 🚀 Project Presentation <a name="live-demo"></a>
 
@@ -60,7 +60,12 @@ It's an application that allows users to add, edit and remove items from the lis
 Clone this repository to your desired folder:
 sh
   cd my-folder
- git clone https://github.com/ernestmusong/To-Do-List.git
+ git clone https://github.com/ernestmusong/javascript-group-capstone.git
+
+ ### Run Test
+
+Run: npm test
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -72,6 +77,15 @@ sh
 - GitHub: [@ernestmusong](https://github.com/ernestmusong)
 - Twitter: [@MusongAkeh](https://twitter.com/MusongAkeh)
 - LinkedIn: [Musong Ernest](https://www.linkedin.com/in/musong-ernest-akeh-921b73211/)
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Nicholas Amissah**
+
+-   GitHub: [Nicholas Amissah](https://github.com/atok624)
+-   Twitter: [Nicholas Amissah](https://twitter.com/MysticalAmissah)
+-   LinkedIn: [Nicholas Amissah](https://www.linkedin.com/in/nicholas-amissah-153b09154)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
