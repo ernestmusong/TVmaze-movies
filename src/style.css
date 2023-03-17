@@ -253,6 +253,15 @@ main {
   align-items: center;
 }
 
+.form input,
+.form textarea {
+  border: 3px solid black;
+}
+
+.form input {
+  width: 80%;
+}
+
 input:focus:invalid {
   outline: none;
 }
@@ -265,15 +274,6 @@ input:focus:invalid {
   padding-top: 12px;
   vertical-align: top !important;
   resize: vertical;
-}
-
-.form input {
-  width: 80%;
-}
-
-.form input,
-.form textarea {
-  border: 3px solid black;
 }
 
 .form input:focus,
