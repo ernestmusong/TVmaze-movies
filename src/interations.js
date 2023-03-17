@@ -5,7 +5,7 @@ import SHOWS from './home.js';
 const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
 const appsEndPoint = '/apps/';
 const likesEndPoint = '/likes/';
-const id = 'sRPHgjJhQMGqpfqhsriS';
+const id = 'n2zpESiz5HCZWW1SRiUA';
 const popUpOverlay = document.querySelector('.popup-overlay');
 
 export default class INTERACTIONS {
@@ -18,6 +18,7 @@ export default class INTERACTIONS {
           },
         });
         const data = await response.text();
+        console.log(data)
         return data;
       } catch (error) {
         return error;
@@ -45,6 +46,7 @@ export default class INTERACTIONS {
 
       static createNewLike = (e) => {
         if (e.target.classList.contains('heart')) {
+          popUpOverlay.classList.add('remove-popup')
           const id = e.target.getAttribute('id');
           INTERACTIONS.postLike(id).then((data) => {
             if (data === 'Created') {
@@ -58,17 +60,6 @@ export default class INTERACTIONS {
             }
           });
         }
-      }
-
-      static showPopUp = (e) => {
-        SHOWS.getShows().then((data) => {
-          for (let i = 0; i < data.length; i += 1) {
-            if (e.target.id.toString() === data[i].show.id.toString()) {
-              popUpOverlay.classList.remove('remove-popup');
-              COMMENTS.displayPopUp(e);
-            }
-          }
-        });
       }
 
       static removePopUp = (e) => {
