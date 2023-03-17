@@ -21,31 +21,37 @@ const comment = {
 let submitbtn;
 
 export default class COMMENTS {
-    static createNewComment = () => {
-      submitbtn.addEventListener('click', async (e) => {
-        const input = document.querySelector('.input');
-        const cmt = document.querySelector('textarea.comment');
-        if (input.value !== '' && cmt.length !== '') {
-          comment.username = input.value;
-          comment.comment = cmt.value;
-          comment.item_id = e.target.id.toString();
-
-          try {
-            const response = await fetch(baseUrl + appsEndPoint + id + commentsEndPoint, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(comment),
-            });
-            const data = await response.text();
-            return data;
-          } catch (error) {
-            return error;
-          }
+  static createNewComment = () => {
+    submitbtn.addEventListener('click', async (e) => {
+      const input = document.querySelector('.input');
+      const cmt = document.querySelector('textarea.comment');
+      if (input.value !== '' && cmt.length !== '') {
+        comment.username = input.value;
+        comment.comment = cmt.value;
+        comment.item_id = e.target.id.toString();
+        try {
+          const response = await fetch(baseUrl + appsEndPoint + id + commentsEndPoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(comment),
+          });
+          const data = await response.text();
+          // Display the new comment on the screen
+          const commentList = document.querySelector('.commentors');
+          const newComment = `<li>${comment.creation_date} ${comment.username}: ${comment.comment}</li>`;
+          commentList.insertAdjacentHTML('beforeend', newComment);
+          // Update the comment count
+          const commentCount = document.querySelector('#comments-count');
+          commentCount.textContent = JSON.parse(data).length;
+          return data;
+        } catch (error) {
+          return error;
         }
-      });
-    }
+      }
+    });
+  }
 
       static getComments = async (itemId) => {
         try {
@@ -123,6 +129,7 @@ export default class COMMENTS {
             popUpOverlay.classList.remove('remove-popup');
             submitbtn = document.querySelector('.submitbtn');
             COMMENTS.createNewComment();
+            document.addEventListener('click', COMMENTS.displayPopUp);
           });
         }
       }
