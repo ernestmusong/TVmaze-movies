@@ -56,7 +56,7 @@ export default class SHOWS {
           INTERACTIONS.getLikes().then((likes) => {
             if (likes.length) {
               SHOWS.newMovies(likes, data);
-            }
+            } else { SHOWS.newMovies(data, data); }
           });
         });
       }

@@ -5,7 +5,6 @@ import SHOWS from './home.js';
 import INTERACTIONS from './interations.js';
 import COMMENTS from './comments.js';
 
-const popUpOverlay = document.querySelector('.popup-overlay');
 library.add(faHeart);
 dom.watch();
 
@@ -17,10 +16,9 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('click', (e) => {
+  e.preventDefault();
   INTERACTIONS.createNewLike(e);
   INTERACTIONS.removePopUp(e);
-  if (e.target.id === 'submit-btn') {
-    COMMENTS.createNewComment(e);
-    popUpOverlay.classList.remove('remove-popup');
-  }
+
+  COMMENTS.displayPopUp(e);
 });
