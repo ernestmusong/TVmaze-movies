@@ -15,6 +15,10 @@ export default class SHOWS {
       return data;
     }
 
+    static moviesCount = (movies) => {
+      count.textContent = movies.length;
+    }
+
     static renderMovies = (movies) => {
       let result = '';
       movies.forEach((movie) => {
@@ -47,12 +51,12 @@ export default class SHOWS {
         });
         SHOWS.allShows = mappedMovies;
         SHOWS.renderMovies(mappedMovies);
+        SHOWS.moviesCount(mappedMovies);
       }
 
       static displayShows() {
         SHOWS.getShows().then((data) => {
           this.allShows = data;
-          count.textContent = `(${data.length})`;
           INTERACTIONS.getLikes().then((likes) => {
             if (likes.length) {
               SHOWS.newMovies(likes, data);

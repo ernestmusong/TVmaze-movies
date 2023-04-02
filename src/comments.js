@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint import/no-cycle: 0 */
 // eslint-disable-next-line no-unused-vars
-import { text } from '@fortawesome/fontawesome-svg-core';
 import SHOWS from './home.js';
 import closeIcon from './assets/images/closeIcon.png';
 
@@ -11,11 +10,12 @@ const commentsEndPoint = '/comments/';
 const CommentEndPt = '/comments?item_id=';
 const id = 'sRPHgjJhQMGqpfqhsriS';
 const popUpOverlay = document.querySelector('.popup-overlay');
+let counter = 0;
 
 const comment = {
-  item_id: '',
-  username: '',
-  comment: '',
+  item_id: String,
+  username: String,
+  comment: String,
 };
 
 let submitbtn;
@@ -39,6 +39,21 @@ export default class COMMENTS {
               body: JSON.stringify(comment),
             });
             const data = await response.text();
+            // Display the new comment on the screen
+            const currentDate = new Date();
+            const cDay = (`0${currentDate.getDate()}`).slice(-2);
+            const cMonth = (`0${currentDate.getMonth() + 1}`).slice(-2);// add leading zero for single digit month
+            const cYear = currentDate.getFullYear();
+            const date = `${cYear}-${cMonth}-${cDay}`;
+            const commentCount = document.querySelector('#comments-count');
+            const commentList = document.querySelector('.commentors');
+            const newComment = `<li>${date} ${comment.username}: ${comment.comment}</li>`;
+            commentList.insertAdjacentHTML('beforeend', newComment);
+            const value = JSON.parse(data).length;
+            if (value) {
+              commentCount.textContent = value + 1;
+            }
+
             return data;
           } catch (error) {
             return error;
@@ -62,14 +77,21 @@ export default class COMMENTS {
         }
       }
 
+      static commentsCount = (comments) => {
+        const count = comments ? comments.length : 0;
+        return count;
+      }
+
       static displayPopUp = (e) => {
-        if (e.target.classList.contains('comment-btn')) {
+        if (e.target.classList.contains('comment-btn') || e.target.classList.contains('submitbtn')) {
           const id = e.target.getAttribute('id');
           const detail = SHOWS.allShows.find((item) => Number(item.id) === Number(e.target.id));
           let detailResult = '';
           COMMENTS.getComments(id).then((comments) => {
             if (comments.length) {
-              JSON.parse(comments).forEach((comment) => {
+              const allComments = JSON.parse(comments);
+              counter = COMMENTS.commentsCount(allComments);
+              allComments.forEach((comment) => {
                 detailResult += `<li>${comment.creation_date} ${comment.username}: ${comment.comment}</li>`;
               });
             }
@@ -98,9 +120,7 @@ export default class COMMENTS {
                   </div>
               </div>
               <div class="comment-wrap">
-                  <p>comments <span id="comments-count">${(JSON.parse(comments) && JSON.parse(comments).length) ? JSON.parse(
-              comments,
-            ).length : 0}</span></p>
+                  <p>comments <span id="comments-count">${counter}</span></p>
               </div>
               <ul class="commentors">${detailResult}</ul>
               <div class="add-comment">
