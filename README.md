@@ -65,7 +65,7 @@ sh
   cd my-folder
  git clone https://github.com/ernestmusong/javascript-group-capstone.git
 
- ## Run Test
+ ### Run Test
 
 Run: npm test
 

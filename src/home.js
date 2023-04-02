@@ -15,14 +15,8 @@ export default class SHOWS {
       return data;
     }
 
-    static getItemCount = () => SHOWS.allShows.length
-
-    static getCommentCount = () => {
-      let count = 0;
-      SHOWS.allShows.forEach((show) => {
-        count += show.comments.length;
-      });
-      return count;
+    static moviesCount = (movies) => {
+      count.textContent = movies.length;
     }
 
     static renderMovies = (movies) => {
@@ -47,27 +41,27 @@ export default class SHOWS {
       showsContainer.innerHTML = result;
     }
 
-    static newMovies = (likes, movies) => {
-      const mappedMovies = movies.map((movie) => {
-        const likedMovie = likes.find((like) => Number(like.item_id) === Number(movie.id));
-        return {
-          ...movie,
-          likes: likedMovie ? likedMovie.likes : 0,
-        };
-      });
-      SHOWS.allShows = mappedMovies;
-      SHOWS.renderMovies(mappedMovies);
-    }
-
-    static displayShows() {
-      SHOWS.getShows().then((data) => {
-        this.allShows = data;
-        count.textContent = `(${data.length})`;
-        INTERACTIONS.getLikes().then((likes) => {
-          if (likes.length) {
-            SHOWS.newMovies(likes, data);
-          } else { SHOWS.newMovies(data, data); }
+      static newMovies = (likes, movies) => {
+        const mappedMovies = movies.map((movie) => {
+          const likedMovie = likes.find((like) => Number(like.item_id) === Number(movie.id));
+          return {
+            ...movie,
+            likes: likedMovie ? likedMovie.likes : 0,
+          };
         });
-      });
-    }
+        SHOWS.allShows = mappedMovies;
+        SHOWS.renderMovies(mappedMovies);
+        SHOWS.moviesCount(mappedMovies);
+      }
+
+      static displayShows() {
+        SHOWS.getShows().then((data) => {
+          this.allShows = data;
+          INTERACTIONS.getLikes().then((likes) => {
+            if (likes.length) {
+              SHOWS.newMovies(likes, data);
+            } else { SHOWS.newMovies(data, data); }
+          });
+        });
+      }
 }
