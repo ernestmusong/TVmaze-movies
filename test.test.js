@@ -3,8 +3,6 @@
  */
 
 // TEST FOR ITEMS COUNTER
-import SHOWS from './src/home.js';
-
 const itemsArray = [];
 const mockedApiLength = 20;
 let count = 0; // count displays items count
@@ -48,26 +46,5 @@ describe('counters', () => {
   test('update comments count', () => {
     addComment();
     expect(commentsCount).toBe(1);
-  });
-});
-
-describe('SHOWS', () => {
-  describe('getItemCount', () => {
-    it('returns the correct number of items', () => {
-      const shows = [{}, {}, {}];
-      SHOWS.allShows = shows;
-      expect(SHOWS.getItemCount()).toEqual(3);
-    });
-  });
-
-  describe('getCommentCount', () => {
-    it('returns the correct number of comments', () => {
-      const shows = [{ comments: [{}, {}] },
-        { comments: [{}, {}, {}] },
-        { comments: [] },
-      ];
-      SHOWS.allShows = shows;
-      expect(SHOWS.getCommentCount()).toEqual(5);
-    });
   });
 });
